@@ -1,11 +1,12 @@
 {
   "name": "cordova-plugin-oidc-basic",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Interfaces with OpenID Connect providers using native frameworks",
   "cordova": {
     "id": "cordova-plugin-oidc-basic",
     "platforms": [
       "ios",
+      "android",
       "windows"
     ]
   },
@@ -27,7 +28,7 @@
   ],
   "engines": {
     "cordovaDependencies": {
-      "0.0.1": {
+      "0.0.2": {
         "cordova-ios": ">=4.3.0"
       }
     }

@@ -2,7 +2,7 @@
 <plugin id="cordova-plugin-oidc-basic"
         xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        version="0.0.1">
+        version="0.0.2">
 
     <name>OpenID Connect Basic</name>
 
@@ -21,7 +21,7 @@
         <!-- Minimum version supported by AppAuth-iOS -->
         <engine name="apple-ios" version=">=7.0" />
         <!-- Minimum version supported by AppAuth-Android -->
-        <engine name="android-sdk" version=">=16" />
+        <engine name="android-sdk" version=">=30" />
     </engines>
 
     <!-- interface -->
@@ -75,6 +75,22 @@
                 </intent-filter>
             </activity>
         </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!-- REM note: Added 06-02-22 to support Android API 30+ 
+                 See: https://github.com/openid/AppAuth-Android/issues/599 -->
+            <queries>
+                <intent>
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                    <data android:scheme="https" />
+                </intent>
+
+                <intent>
+                    <action android:name="android.support.customtabs.action.CustomTabsService" />
+                </intent>
+            </queries>
+        </config-file>   
 
         <source-file src="src/android/OIDCBasic.java" target-dir="src/com/mico/cordova/plugin/oidc/basic"/>
 
